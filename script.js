@@ -22,9 +22,9 @@ let displayLink = document.querySelector(".display-link");
 
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
-let image = ["https://images.genius.com/10068e8dc0170620a2e6787cb66de839.1000x1000x1.jpg", "https://i.scdn.co/image/ab67616d0000b2734246e3158421f5abb75abc4f", "https://images.genius.com/dc3ff58e1a397c3f98087fa5e789af2c.1000x1000x1.jpg", "https://images.genius.com/904c0b444e86eb290bf532a7a7c07560.1000x1000x1.jpg", "http://images.genius.com/0c05d06230f08c037472432e962228c8.1000x1000x1.jpg"]
+let albumCovers = ["https://images.genius.com/10068e8dc0170620a2e6787cb66de839.1000x1000x1.jpg", "https://i.scdn.co/image/ab67616d0000b2734246e3158421f5abb75abc4f", "https://images.genius.com/dc3ff58e1a397c3f98087fa5e789af2c.1000x1000x1.jpg", "https://images.genius.com/904c0b444e86eb290bf532a7a7c07560.1000x1000x1.jpg", "http://images.genius.com/0c05d06230f08c037472432e962228c8.1000x1000x1.jpg"]
 let songNames = ["Chosen", "All I Want For Christmas Is You", "Floral and Fading", "Tangled in the Great Escape", "She-Wrecks"]
-let artist = ["The Living Tombstone", "Mariah Carey", "Pierce the Veil", "Pierce the Veil", "Bear Ghost"]
+let songArtists = ["The Living Tombstone", "Mariah Carey", "Pierce the Veil", "Pierce the Veil", "Bear Ghost"]
 let songLinks = ["https://www.youtube.com/watch?v=aJgOdZN4HcA", "https://www.youtube.com/watch?v=aAkMkVFwAoo", "https://www.youtube.com/watch?v=wON8K9cWKQ4", "https://www.youtube.com/watch?v=vknw3Uy12-0", "https://www.youtube.com/watch?v=W2jg4uZ5OYA"]
 
 
@@ -50,7 +50,11 @@ let songLinks = ["https://www.youtube.com/watch?v=aJgOdZN4HcA", "https://www.you
 function addSongInfo() {
 
   // task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
-
+  let userImage = image;
+  let userSong = songName;
+  let userArtist = artist;
+  let userLink = songLink;
+  console.log(userImage, userSong, userArtist, userLink);
 
   // task 10: use `.push()` to add each input value to the correct array.
 
@@ -73,10 +77,19 @@ function emptyDisplay() {
 function displaySongInfo() {
 
   // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
-  for (i = 0; i < image.length; i++) {
-    display.innerHTML = image[i];
-  }
-
+  albumCovers.forEach(function(album) {
+    console.log(album);
+    displayImage.insertAdjacentHTML('beforeend', `<img src='${album}'/>`)
+  })
+  songNames.forEach(function(name) {
+    displaySong.insertAdjacentHTML('beforeend', `<p>${name}</p>`)
+  })
+  songArtists.forEach(function(artist) {
+    displayArtist.insertAdjacentHTML('beforeend', `<p>${artist}</p>`)
+  })
+  songLinks.forEach(function(link) {
+    displayLink.insertAdjacentHTML('beforeend', `<a href='${link}'>Listen to the song here...</a>`)
+  })
 
 }
 
