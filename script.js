@@ -22,19 +22,50 @@ let displayLink = document.querySelector(".display-link");
 
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
-let albumCovers = ["https://images.genius.com/10068e8dc0170620a2e6787cb66de839.1000x1000x1.jpg", "https://i.scdn.co/image/ab67616d0000b2734246e3158421f5abb75abc4f", "https://images.genius.com/dc3ff58e1a397c3f98087fa5e789af2c.1000x1000x1.jpg", "https://images.genius.com/904c0b444e86eb290bf532a7a7c07560.1000x1000x1.jpg", "http://images.genius.com/0c05d06230f08c037472432e962228c8.1000x1000x1.jpg"]
-let songNames = ["Chosen", "All I Want For Christmas Is You", "Floral and Fading", "Tangled in the Great Escape", "She-Wrecks"]
-let songArtists = ["The Living Tombstone", "Mariah Carey", "Pierce the Veil", "Pierce the Veil", "Bear Ghost"]
-let songLinks = ["https://www.youtube.com/watch?v=aJgOdZN4HcA", "https://www.youtube.com/watch?v=aAkMkVFwAoo", "https://www.youtube.com/watch?v=wON8K9cWKQ4", "https://www.youtube.com/watch?v=vknw3Uy12-0", "https://www.youtube.com/watch?v=W2jg4uZ5OYA"]
+// let albumCovers = ["https://images.genius.com/10068e8dc0170620a2e6787cb66de839.1000x1000x1.jpg", "https://i.scdn.co/image/ab67616d0000b2734246e3158421f5abb75abc4f", "https://images.genius.com/dc3ff58e1a397c3f98087fa5e789af2c.1000x1000x1.jpg", "https://images.genius.com/904c0b444e86eb290bf532a7a7c07560.1000x1000x1.jpg", "http://images.genius.com/0c05d06230f08c037472432e962228c8.1000x1000x1.jpg"]
+// let songNames = ["Chosen", "All I Want For Christmas Is You", "Floral and Fading", "Tangled in the Great Escape", "She-Wrecks"]
+// let songArtists = ["The Living Tombstone", "Mariah Carey", "Pierce the Veil", "Pierce the Veil", "Bear Ghost"]
+// let songLinks = ["https://www.youtube.com/watch?v=aJgOdZN4HcA", "https://www.youtube.com/watch?v=aAkMkVFwAoo", "https://www.youtube.com/watch?v=wON8K9cWKQ4", "https://www.youtube.com/watch?v=vknw3Uy12-0", "https://www.youtube.com/watch?v=W2jg4uZ5OYA"]
 
+let chosen = {
+  albumCover: "https://images.genius.com/10068e8dc0170620a2e6787cb66de839.1000x1000x1.jpg",
+  songName: "Chosen",
+  songArtist: "The Living Tombstone",
+  link: "https://www.youtube.com/watch?v=aJgOdZN4HcA"
+}
+let christmasIsU = {
+  albumCover: "https://i.scdn.co/image/ab67616d0000b2734246e3158421f5abb75abc4f",
+  songName: "All I Want For Christmas Is You",
+  songArtist: "Mariah Carey",
+  link: "https://www.youtube.com/watch?v=aAkMkVFwAoo"
+}
+let floralFading = {
+  albumCover: "https://images.genius.com/dc3ff58e1a397c3f98087fa5e789af2c.1000x1000x1.jpg",
+  songName: "Floral and Fading",
+  songArtist: "Pierce the Veil",
+  link: "https://www.youtube.com/watch?v=wON8K9cWKQ4"
+}
+let tangled = {
+  albumCover: "https://images.genius.com/904c0b444e86eb290bf532a7a7c07560.1000x1000x1.jpg",
+  songName: "Tangled in the Great Escape",
+  songArtist: "Pierce the Veil",
+  link: "https://www.youtube.com/watch?v=vknw3Uy12-0"
+}
+let sheWrecks = {
+  albumCover: "http://images.genius.com/0c05d06230f08c037472432e962228c8.1000x1000x1.jpg",
+  songName: "She-Wrecks",
+  songArtist: "Bear Ghost",
+  link: "https://www.youtube.com/watch?v=W2jg4uZ5OYA"
+}
+let playlistDef = [chosen, christmasIsU, floralFading, tangled, sheWrecks];
 
 
 
 //REFACTOR ARRAYS DAY 
-// task 11: comment out the arrays data.
-// task 12: create an object for each of your songs.
-// task 13: inside each object, add key/value pairs to store the image url, song name, artist, and song link.
-// task 14: create an array that stores all of the objects.
+// task 11: comment out the arrays data.ye
+// task 12: create an object for each of your songs.ye
+// task 13: inside each object, add key/value pairs to store the image url, song name, artist, and song link.ye
+// task 14: create an array that stores all of the objects.ye
 
 
 
@@ -50,14 +81,15 @@ let songLinks = ["https://www.youtube.com/watch?v=aJgOdZN4HcA", "https://www.you
 function addSongInfo() {
 
   // task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
-  let userImage = image;
-  let userSong = songName;
-  let userArtist = artist;
-  let userLink = songLink;
-  console.log(userImage, userSong, userArtist, userLink);
-
+  let newSong = {
+    albumCover: String(image.value),
+    songName: String(songName.value),
+    songArtist: String(artist.value),
+    link: String(songLink.value)
+  }
+  console.log(newSong);
   // task 10: use `.push()` to add each input value to the correct array.
-
+  playlistDef.push(newSong);
 }
 
 
@@ -77,20 +109,25 @@ function emptyDisplay() {
 function displaySongInfo() {
 
   // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
-  albumCovers.forEach(function(album) {
-    console.log(album);
-    displayImage.insertAdjacentHTML('beforeend', `<img src='${album}'/>`)
+  // albumCovers.forEach(function(album) {
+  //   console.log(album);
+  //   displayImage.insertAdjacentHTML('beforeend', `<img src='${album}'/>`)
+  // })
+  // songNames.forEach(function(name) {
+  //   displaySong.insertAdjacentHTML('beforeend', `<p>${name}</p>`)
+  // })
+  // songArtists.forEach(function(artist) {
+  //   displayArtist.insertAdjacentHTML('beforeend', `<p>${artist}</p>`)
+  // })
+  // songLinks.forEach(function(link) {
+  //   displayLink.insertAdjacentHTML('beforeend', `<a href='${link}'>Listen to the song here...</a>`)
+  // })
+  playlistDef.forEach(function(song) {
+    displayImage.insertAdjacentHTML("beforeend", `<img src='${song.albumCover}'/>`);
+    displaySong.insertAdjacentHTML("beforeend", `<p>${song.songName}</p>`);
+    displayArtist.insertAdjacentHTML("beforeend", `<p>${song.songArtist}</p>`);
+    displayLink.insertAdjacentHTML("beforeend", `<a href="${song.link}">Listen to the song here...</a>`)
   })
-  songNames.forEach(function(name) {
-    displaySong.insertAdjacentHTML('beforeend', `<p>${name}</p>`)
-  })
-  songArtists.forEach(function(artist) {
-    displayArtist.insertAdjacentHTML('beforeend', `<p>${artist}</p>`)
-  })
-  songLinks.forEach(function(link) {
-    displayLink.insertAdjacentHTML('beforeend', `<a href='${link}'>Listen to the song here...</a>`)
-  })
-
 }
 
 
@@ -99,6 +136,7 @@ function displaySongInfo() {
 
 // click event to add and display songs
 add.onclick = function() {
+  emptyDisplay();
   addSongInfo();
   displaySongInfo();
 };
